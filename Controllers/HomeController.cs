@@ -20,6 +20,19 @@ namespace ProjectMvcNet.Controllers
 
         public IActionResult Index()
         {
+            var data = DateTime.Now.Hour;
+            if (data >= 6 && data < 12)
+            {
+                ViewData["Reception"] = "Good Morning!";
+            }
+            else if (data > 12 && data < 18)
+            {
+                ViewData["Reception"] = "Good Afternoon!";
+            }
+            else
+            {
+                ViewData["Reception"] = "Good Evening!";
+            }
             return View();
         }
 
