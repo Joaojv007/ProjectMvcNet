@@ -7,8 +7,8 @@ namespace ProjectMvcNet.Models
     public class Seller
     {
         public int Id { get; set; }
-        public string Email { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public double BaseSalary { get; set; }
         public DateTime BirthDate { get; set; }
         public Department Department { get; set; }
@@ -18,7 +18,7 @@ namespace ProjectMvcNet.Models
         {
         }
 
-        public Seller(int id, string email, string name, double baseSalary, DateTime birthDate, Department department)
+        public Seller(int id, string name, string email, double baseSalary, DateTime birthDate, Department department)
         {
             Id = id;
             Name = name;
