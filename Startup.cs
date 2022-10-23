@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectMvcNet.Data;
+using ProjectMvcNet.Services;
 
 namespace ProjectMvcNet
 {
@@ -31,6 +32,7 @@ namespace ProjectMvcNet
                     options.UseMySql(Configuration.GetConnectionString("ProjectMvcNetContext"), ServerVersion.AutoDetect(Configuration.GetConnectionString("ProjectMvcNetContext")), builder => builder.MigrationsAssembly("ProjectMvcNet")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
