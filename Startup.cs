@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProjectMvcNet.Data;
 using ProjectMvcNet.Services;
-
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 namespace ProjectMvcNet
 {
     public class Startup
@@ -39,6 +40,16 @@ namespace ProjectMvcNet
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
+            var enUs = new CultureInfo("en-Us");
+            var localizatinOption = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUs),
+                SupportedCultures = new List<CultureInfo> { enUs },
+                SupportedUICultures = new List<CultureInfo> { enUs }
+            };
+
+            app.UseRequestLocalization(localizatinOption);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
