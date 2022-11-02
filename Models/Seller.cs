@@ -8,7 +8,10 @@ namespace ProjectMvcNet.Models
     public class Seller
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(60, MinimumLength = 2, ErrorMessage = "{0} size should be between {2} and {1}")]
         public string Name { get; set; }
+        [EmailAddress(ErrorMessage = "Email not is valid")]
         public string Email { get; set; }
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
