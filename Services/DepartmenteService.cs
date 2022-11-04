@@ -2,6 +2,8 @@
 using System.Linq;
 using ProjectMvcNet.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectMvcNet.Services
 {
@@ -14,16 +16,10 @@ namespace ProjectMvcNet.Services
             _context = context;
         }
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
 
-/*        public void Insert(Seller seller)
-        {
-            seller.Department = _context.Department.First();
-            _context.Add(seller);
-            _context.SaveChanges();
-        }*/
     }
 }
